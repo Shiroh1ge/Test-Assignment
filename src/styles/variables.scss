@@ -16,7 +16,12 @@ $primary-3: mat-color($app-primary, 600);
 
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
-$primary-bg: #f5f5f5;
 
 $header-height: 50px;
 $page-padding: 10px;
+
+$primary-bg: #f5f5f5;
+$active-link-bg: #dae8fc;
+$primary-text: black;
+$primary-border-color: #666666;
+$active-link-border-color: #6c8ebf;

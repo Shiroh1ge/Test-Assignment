@@ -1,0 +1,10 @@
+<div class="side-nav">
+  <mat-sidenav opened mode="side">
+    <ul class="routes">
+      <li class="routes__route" *ngFor="let route of routes">
+        <a routerLinkActive="active"
+          [routerLink]="route.path">{{route.name}}</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+</div>

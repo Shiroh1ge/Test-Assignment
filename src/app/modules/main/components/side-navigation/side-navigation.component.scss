@@ -1,0 +1,39 @@
+@import 'src/styles/variables';
+$link-border: 1px solid $primary-border-color;
+$link-border-active: 1px solid $active-link-border-color;
+
+.side-nav {
+  height: 100%;
+  width: 150px;
+  background-color: $primary-bg;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+
+  .routes {
+    display: flex;
+    flex-direction: column;
+
+    &__route {
+      margin-top: 10px;
+      display: flex;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        color: $primary-text;
+        border-top: $link-border;
+        border-bottom: $link-border;
+
+        &.active {
+          background: $active-link-bg;
+          border-top: $link-border-active;
+          border-bottom: $link-border-active;
+          font-weight: 600;
+        }
+      }
+
+    }
+  }
+}
