@@ -1,24 +1,29 @@
 <div class="consent-container">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="user-details">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput>
+        <input matInput formControlName="username">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Email address</mat-label>
-        <input matInput>
+        <input matInput formControlName="email">
       </mat-form-field>
     </div>
 
     <p>I agree to:</p>
 
-    <div class="controls-container">
-      <mat-checkbox class="example-margin">Receive newsletter</mat-checkbox>
-      <mat-checkbox class="example-margin">Be shown targeted ads</mat-checkbox>
-      <mat-checkbox class="example-margin">Contribute to anonymous visit statistics</mat-checkbox>
-
+    <div class="controls-container" formArrayName="consentGrants">
+      <mat-checkbox class="example-margin" (change)="toggleAddConsentGrant(ConsentGrant.NEWSLETTER)">Receive newsletter</mat-checkbox>
+      <mat-checkbox class="example-margin" (change)="toggleAddConsentGrant(ConsentGrant.TARGETED_ADS)">Be shown targeted ads</mat-checkbox>
+      <mat-checkbox class="example-margin" (change)="toggleAddConsentGrant(ConsentGrant.ANONYMOUS_STATISTICS)">Contribute to anonymous visit statistics</mat-checkbox>
     </div>
+
+    <button class="submit-button"
+            [disabled]="form.invalid"
+            mat-raised-button
+            color="primary">Give consent
+    </button>
   </form>
 </div>

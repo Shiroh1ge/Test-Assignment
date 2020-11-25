@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsentsFacade } from '../../services/consents.facade';
 
 @Component({
   selector: 'app-consents',

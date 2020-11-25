@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsentsFacade } from './services/consents.facade';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private consentsFacade: ConsentsFacade) { }
 
   ngOnInit(): void {
+    this.consentsFacade.getConsents();
   }
 
 }
