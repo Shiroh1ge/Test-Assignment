@@ -6,6 +6,6 @@ export interface MainState {
   consents: ConsentsStateModel;
 }
 
-export const consentReducer = combineReducers<MainState>({
+export const mainReducer = combineReducers<MainState>({
   consents: consentsReducer
 });
