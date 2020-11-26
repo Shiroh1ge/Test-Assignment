@@ -22,8 +22,6 @@ describe('ConsentsComponent', () => {
   let fixture: ComponentFixture<ConsentsComponent>;
   let store: MockStore<ConsentsStateModel>;
   let consentsFacade: ConsentsFacade;
-  let getConsentsSpy;
-  let consentsSpy;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -43,7 +41,6 @@ describe('ConsentsComponent', () => {
     consentsFacade = TestBed.inject(ConsentsFacade);
     component = new ConsentsComponent(consentsFacade);
 
-    console.log('component', component);
     component.ngOnInit();
     fixture.detectChanges();
   });
