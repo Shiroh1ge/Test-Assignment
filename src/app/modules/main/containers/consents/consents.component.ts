@@ -22,7 +22,7 @@ export class ConsentsComponent implements OnInit {
     [ConsentGrant.ANONYMOUS_STATISTICS]: 'Contribute to anonymous visit statistics'
   };
 
-  constructor(private consentsFacade: ConsentsFacade, private cdr: ChangeDetectorRef) {
+  constructor(private consentsFacade: ConsentsFacade) {
   }
 
   ngAfterViewInit() {

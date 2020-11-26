@@ -35,6 +35,7 @@ export class ConsentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('this.consentsFacade', this.consentsFacade);
     this.consentsFacade.createConsentSuccess$().subscribe(consent => {
       this.router.navigate(['/consents']);
     });

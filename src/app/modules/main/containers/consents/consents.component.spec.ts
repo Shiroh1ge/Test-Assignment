@@ -1,25 +1,57 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Store } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Observable, of } from 'rxjs';
+import { mockConsents } from '../../../../constants/mock-data';
+import { ConsentModel } from '../../../../models/consent.model';
+import { SharedModule } from '../../../shared/shared.module';
+import { ConsentsFacade } from '../../services/consents.facade';
+import { ConsentsStateModel } from '../../store/models/consents-state.model';
 
 import { ConsentsComponent } from './consents.component';
 
-describe('ConsentComponent', () => {
+class MockConsentsFacade {
+  consents$: Observable<ConsentModel[]> = of(mockConsents);
+}
+
+describe('ConsentsComponent', () => {
   let component: ConsentsComponent;
   let fixture: ComponentFixture<ConsentsComponent>;
+  let store: MockStore<ConsentsStateModel>;
+  let consentsFacade: ConsentsFacade;
+  let getConsentsSpy;
+  let consentsSpy;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConsentsComponent ]
+      // imports: [SharedModule, BrowserAnimationsModule, ReactiveFormsModule, MatSidenavModule],
+      // declarations: [ConsentsComponent],
+      // providers: [
+      //   provideMockStore({}),
+      //   { provide: ConsentsFacade, useClass: MockConsentsFacade }
+      // ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConsentsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture = TestBed.createComponent(ConsentsComponent);
+    // store = TestBed.get<Store<ConsentsStateModel>>(Store);
+    // consentsFacade = TestBed.inject(ConsentsFacade);
+    // component = new ConsentsComponent(consentsFacade);
+
+    console.log('component', component);
+    // component.ngOnInit();
+    // fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   console.log('component', component);
+  //   expect(component).toBeTruthy();
+  // });
 });

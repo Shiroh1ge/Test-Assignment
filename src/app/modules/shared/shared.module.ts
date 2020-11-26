@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { sharedDirectives } from './directives';
 
@@ -11,7 +12,17 @@ import { sharedDirectives } from './directives';
   imports: [],
   declarations: [sharedDirectives],
   providers: [],
-  exports: [sharedDirectives, MatInputModule, MatCheckboxModule, ReactiveFormsModule, FormsModule, MatButtonModule, MatTableModule, MatPaginatorModule]
+  exports: [
+    sharedDirectives,
+    MatInputModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSidenavModule
+  ]
 })
 export class SharedModule {
 }
