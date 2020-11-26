@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { takeWhile } from 'rxjs/operators';
+import { ConsentGrant } from '../../../../enums/consent-grant.enum';
 import { ConsentModel } from '../../../../models/consent.model';
 import { ConsentsFacade } from '../../services/consents.facade';
 
@@ -14,8 +15,12 @@ export class ConsentsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   private componentAlive: boolean = true;
   public list = new MatTableDataSource<ConsentModel>();
-
   public displayedColumns = ['name', 'email', 'consentGrants'];
+  public grantsTextMap = {
+    [ConsentGrant.NEWSLETTER]: 'Receive newsletter',
+    [ConsentGrant.TARGETED_ADS]: 'Be shown targeted ads',
+    [ConsentGrant.ANONYMOUS_STATISTICS]: 'Contribute to anonymous visit statistics'
+  };
 
   constructor(private consentsFacade: ConsentsFacade, private cdr: ChangeDetectorRef) {
   }
@@ -23,19 +28,6 @@ export class ConsentsComponent implements OnInit {
   ngAfterViewInit() {
     this.list.paginator = this.paginator;
   }
-
-  // public onPageChanged(i: number): void {
-  //   console.log('i', i);
-  //   this.paginator.pageIndex = i;
-  //
-  //   this.paginator.page.next({
-  //     pageIndex: i,
-  //     pageSize: this.paginator.pageSize,
-  //     length: this.paginator.length
-  //   });
-  //
-  //   this.cdr.detectChanges();
-  // }
 
   ngOnInit(): void {
     this.consentsFacade.consents$

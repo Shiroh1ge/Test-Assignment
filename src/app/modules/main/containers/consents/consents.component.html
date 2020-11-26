@@ -15,7 +15,11 @@
       <ng-container matColumnDef="consentGrants">
         <mat-header-cell *matHeaderCellDef>Consents given for</mat-header-cell>
         <mat-cell *matCellDef="let consent">
-          <span *ngFor="let grant of consent.consentGrants">{{grant}}</span>
+          <span>
+            <ng-container *ngFor="let grant of consent.consentGrants; let isLast = last">
+            {{grantsTextMap[grant]}}{{isLast ? '' : ', '}}
+            </ng-container>
+          </span>
         </mat-cell>
       </ng-container>
 
@@ -26,7 +30,7 @@
     <mat-paginator #paginator
                    [elementsCount]="list.data.length"
                    stylePaginator
-                   [showTotalPages]="4"
+                   [showTotalPages]="3"
                    [length]="1000"
                    [pageSizeOptions]="[2, 5, 10, 25, 100]"
                    [pageSize]="2"

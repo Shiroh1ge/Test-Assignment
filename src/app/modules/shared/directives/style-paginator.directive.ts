@@ -110,14 +110,14 @@ export class StylePaginatorDirective {
           nextPageNode
         );
       } else {
-        // if (i > this._rangeEnd && !dots) {
-        //   this.ren.insertBefore(
-        //     actionContainer,
-        //     this.createButton(this._pageGapTxt, this.matPag.pageIndex),
-        //     nextPageNode
-        //   );
-        //   dots = true;
-        // }
+        if (i > this._rangeEnd && !dots) {
+          this.ren.insertBefore(
+            actionContainer,
+            this.createButton(this._pageGapTxt, this.matPag.pageIndex),
+            nextPageNode
+          );
+          dots = true;
+        }
       }
     }
   }
@@ -160,7 +160,7 @@ export class StylePaginatorDirective {
     this.buildPageNumbers();
   }
 
-  public goToPage(i: number) {
+  public goToPage(i: number): void {
     this.matPag.page.next({
       pageIndex: i,
       pageSize: this.matPag.pageSize,

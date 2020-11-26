@@ -4,3 +4,4 @@ export enum ConsentGrant {
   ANONYMOUS_STATISTICS = 'anonymous_statistics'
 }
 
+export const ConsentGrants = Object.values(ConsentGrant);
