@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -29,29 +27,38 @@ describe('ConsentsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      // imports: [SharedModule, BrowserAnimationsModule, ReactiveFormsModule, MatSidenavModule],
-      // declarations: [ConsentsComponent],
-      // providers: [
-      //   provideMockStore({}),
-      //   { provide: ConsentsFacade, useClass: MockConsentsFacade }
-      // ]
+      imports: [SharedModule, BrowserAnimationsModule, ReactiveFormsModule, MatSidenavModule],
+      declarations: [ConsentsComponent],
+      providers: [
+        provideMockStore({}),
+        { provide: ConsentsFacade, useClass: MockConsentsFacade }
+      ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    // fixture = TestBed.createComponent(ConsentsComponent);
-    // store = TestBed.get<Store<ConsentsStateModel>>(Store);
-    // consentsFacade = TestBed.inject(ConsentsFacade);
-    // component = new ConsentsComponent(consentsFacade);
+    fixture = TestBed.createComponent(ConsentsComponent);
+    store = TestBed.get<Store<ConsentsStateModel>>(Store);
+    consentsFacade = TestBed.inject(ConsentsFacade);
+    component = new ConsentsComponent(consentsFacade);
 
     console.log('component', component);
-    // component.ngOnInit();
-    // fixture.detectChanges();
+    component.ngOnInit();
+    fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   console.log('component', component);
-  //   expect(component).toBeTruthy();
-  // });
+  it('consents should be an array', () => {
+    // Trigger ngOnInit()
+    fixture.detectChanges();
+
+    expect(Array.isArray(component.list.data)).toBeTruthy();
+  });
+
+  it('table data should exist', () => {
+    // Trigger ngOnInit()
+    fixture.detectChanges();
+
+    expect(component.list.data.length).toBeTruthy();
+  });
 });

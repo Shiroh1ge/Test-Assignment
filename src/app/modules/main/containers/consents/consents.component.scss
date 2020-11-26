@@ -1,5 +1,21 @@
+$table-border: 1px solid black;
+
 mat-table {
-  border: 1px solid black;
+  border: $table-border;
+
+  mat-row:not(:last-child),
+  mat-header-row {
+    border-bottom: $table-border;
+  }
+
+  mat-header-cell,
+  mat-cell {
+    padding-left: 10px;
+
+    &:not(:last-child) {
+      border-right: $table-border;
+    }
+  }
 }
 
 mat-paginator {
@@ -11,6 +27,7 @@ mat-paginator {
 
     .mat-paginator-range-actions {
       flex: 1;
+      padding-left: 16%;
     }
   }
 }

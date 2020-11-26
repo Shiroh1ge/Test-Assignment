@@ -55,11 +55,6 @@ describe('ConsentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-
   it('should pass validation checks for name', () => {
     const name = component.form.controls.name;
 
