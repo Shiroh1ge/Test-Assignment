@@ -1,3 +1,36 @@
-<div class="container">
-  <div>C</div>
+<div class="consents-container">
+  <div class="center-width-separator">
+    <mat-table #table [dataSource]="list">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let consent">{{consent.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let consent">{{consent.email}}</mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="consentGrants">
+        <mat-header-cell *matHeaderCellDef>Consents given for</mat-header-cell>
+        <mat-cell *matCellDef="let consent">
+          <span *ngFor="let grant of consent.consentGrants">{{grant}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+    <mat-paginator #paginator
+                   [elementsCount]="list.data.length"
+                   stylePaginator
+                   [showTotalPages]="4"
+                   [length]="1000"
+                   [pageSizeOptions]="[2, 5, 10, 25, 100]"
+                   [pageSize]="2"
+    >
+    </mat-paginator>
+  </div>
 </div>

@@ -5,4 +5,5 @@ export interface ConsentModel {
   name: string;
   email: string;
   consentGrants: ConsentGrant[];
+  createdAt: Date;
 }

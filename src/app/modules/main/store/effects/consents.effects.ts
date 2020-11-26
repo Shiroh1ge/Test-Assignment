@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { ConsentsService } from '../../services/consents.service';
 import { ConsentsActions } from '../actions/consents.actions';
 
@@ -13,7 +14,8 @@ export class ConsentsEffects {
         this.consentsService
           .getConsents()
           .pipe(
-            map(consents => ConsentsActions.getConsentsSuccess({ consents }))
+            map(consents => ConsentsActions.getConsentsSuccess({ consents })),
+            catchError(error => of(ConsentsActions.getConsentsError({ error })))
           )
       )
     )
@@ -25,7 +27,10 @@ export class ConsentsEffects {
       mergeMap(({ data }) =>
         this.consentsService
           .createConsent(data)
-          .pipe(map(consent => ConsentsActions.createConsentSuccess({ consent })))
+          .pipe(
+            map(consent => ConsentsActions.createConsentSuccess({ consent })),
+            catchError(error => of(ConsentsActions.createConsentError({ error })))
+          )
       )
     )
   );

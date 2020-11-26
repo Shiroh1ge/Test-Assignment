@@ -12,7 +12,7 @@ import { ConsentsFacade } from '../../services/consents.facade';
 export class ConsentComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      username: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
       consentGrants: new FormArray([], [Validators.required])
     }
   );
@@ -31,7 +31,6 @@ export class ConsentComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log('this.form', this.form.value);
     this.consentsFacade.createConsent(this.form.value);
   }
 

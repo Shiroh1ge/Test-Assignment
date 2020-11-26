@@ -1,0 +1,16 @@
+mat-table {
+  border: 1px solid black;
+}
+
+mat-paginator {
+  ::ng-deep {
+    .mat-paginator-container {
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    .mat-paginator-range-actions {
+      flex: 1;
+    }
+  }
+}

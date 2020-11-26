@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ConsentModel } from '../../../models/consent.model';
 import { ConsentsActions } from '../store/actions/consents.actions';
-import { MainState } from '../store/reducers';
+import { ConsentsStateModel } from '../store/models/consents-state.model';
+import { ConsentsSelectors } from '../store/selectors/consents.selectors';
 
 @Injectable()
 export class ConsentsFacade {
+  public consents$ = this.store.pipe(select(ConsentsSelectors.selectAllConsents));
 
-  constructor(private store: Store<MainState>, private actions$: Actions) {
+  constructor(private store: Store<ConsentsStateModel>, private actions$: Actions) {
   }
 
   public getConsents(): void {
